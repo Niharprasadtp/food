@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Delivery System - Dashboard Flowchart</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            padding: 40px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+        
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .user-section {
+            width: 100%;
+            max-width: 1200px;
+            border: 3px solid #3498db;
+            border-radius: 15px;
+            padding: 30px;
+            background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .admin-section {
+            border-color: #e74c3c;
+            background: linear-gradient(145deg, #fef9f9, #fdeaea);
+        }
+        
+        .customer-section {
+            border-color: #27ae60;
+            background: linear-gradient(145deg, #f8fffe, #eafaf4);
+        }
+        
+        .user-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+        }
+        
+        .admin-title {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        
+        .customer-title {
+            background: linear-gradient(135deg, #27ae60, #229954);
+        }
+        
+        .dashboard-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .page-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid #3498db;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .admin-card {
+            border-left-color: #e74c3c;
+        }
+        
+        .customer-card {
+            border-left-color: #27ae60;
+        }
+        
+        .page-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .page-description {
+            color: #5a6c7d;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .key-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .key-features li {
+            padding: 5px 0;
+            color: #34495e;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .key-features li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .admin-card .key-features li:before {
+            color: #e74c3c;
+        }
+        
+        .customer-card .key-features li:before {
+            color: #27ae60;
+        }
+        
+        .flow-arrow {
+            font-size: 2em;
+            color: #95a5a6;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .connection-line {
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(to bottom, #3498db, #2980b9);
+            margin: 0 auto;
+        }
+        
+        .icon {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .dashboard-flow {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> Delivery System</h1>
+        <p class="subtitle">Complete Dashboard Flow & User Journey</p>
+        
+        <div class="flowchart">
+            <!-- Admin Dashboard Section -->
+            <div class="user-section admin-section">
+                <div class="user-title admin-title">
+                    🛠️ Administrative Portal Dashboard
+                </div>
+                
+                <div class="dashboard-flow">
+                    <div class="page-card admin-card">
+                        <div class="page-title">
+                            📊 Main Dashboard
+                        </div>
+                        <div class="page-description">
+                            Central hub with key metrics and quick actions
+                        </div>
+                        <ul class="key-features">
+                            <li>Weekly sales overview</li>
+                            <li>Pending orders count</li>
+                            <li>Outstanding payments</li>
+                            <li>Quick action buttons</li>
+                            <li>Recent activity feed</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page-card admin-card">
+                        <div class="page-title">
+                            📢 Order Publication
+                        </div>
+                        <div class="page-description">
+                            Create and schedule order announcements
+                        </div>
+                        <ul class="key-features">
+                            <li>Select location & category</li>
+                            <li>Set start/cutoff dates</li>
+                            <li>Generate WhatsApp links</li>
+                            <li>Schedule announcements</li>
+                            <li>Manage active orders</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page-card admin-card">
+                        <div class="page-title">
+                            📦 Order Management
+                        </div>
+                        <div class="page-description">
+                            View and manage incoming orders
+                        </div>
+                        <ul class="key-features">
+                            <li>Order batch grouping</li>
+                            <li>Filter by location/date</li>
+                            <li>Export wholesaler reports</li>
+                            <li>Order status tracking</li>
+                            <li>Customer details view</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page-card admin-card">
+                        <div class="page-title">
+                            🏪 Product Management
+                        </div>
+                        <div class="page-description">
+                            Manage product catalog and availability
+                        </div>
+                        <ul class="key-features">
+                            <li>Product catalog maintenance</li>
+                            <li>Pricing & unit configuration</li>
+                            <li>Location availability</li>
+                            <li>Quantity constraints</li>
+                            <li>Product images & descriptions</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page-card admin-card">
+                        <div class="page-title">
+                            🚚 Delivery Management
+                        </div>
+                        <div class="page-description">
+                            Mobile-optimized delivery operations
+                        </div>
+                        <ul class="key-features">
+                            <li>Customer search interface</li>
+                            <li>Quick invoice generation</li>
+                            <li>On-spot adjustments</li>
+                            <li>Route optimization export</li>
+                            <li>Delivery status updates</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page-card admin-card">
+                        <div class="page-title">
+                            🧾 Invoice & Payments
+                        </div>
+                        <div class="page-description">
+                            Track invoices and payment status
+                        </div>
+                        <ul class="key-features">
+                            <li>Invoice status tracking</li>
+                            <li>Payment reconciliation</li>
+                            <li>Automated reminders</li>
+                            <li>Payment history</li>
+                            <li>Mismatch notifications</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page-card admin-card">
+                        <div class="page-title">
+                            👥 Customer Management
+                        </div>
+                        <div class="page-description">
+                            Comprehensive customer database
+                        </div>
+                        <ul class="key-features">
+                            <li>Customer database</li>
+                            <li>Order history tracking</li>
+                            <li>Contact information</li>
+                            <li>Payment history</li>
+                            <li>Communication logs</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page-card admin-card">
+                        <div class="page-title">
+                            📈 Reports & Analytics
+                        </div>
+                        <div class="page-description">
+                            Business intelligence and reporting
+                        </div>
+                        <ul class="key-features">
+                            <li>Sales reports</li>
+                            <li>Customer analytics</li>
+                            <li>Product performance</li>
+                            <li>Payment summaries</li>
+                            <li>Export capabilities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="connection-line"></div>
+            <div class="flow-arrow">⇅</div>
+            <div class="connection-line"></div>
+            
+            <!-- Customer Dashboard Section -->
+            <div class="user-section customer-section">
+                <div class="user-title customer-title">
+                    🛒 Customer Ordering Interface
+                </div>
+                
+                <div class="dashboard-flow">
+                    <div class="page-card customer-card">
+                        <div class="page-title">
+                            🏠 Landing Page
+                        </div>
+                        <div class="page-description">
+                            Welcome page with order information
+                        </div>
+                        <ul class="key-features">
+                            <li>Order announcement details</li>
+                            <li>Delivery information</li>
+                            <li>Contact details</li>
+                            <li>Order status display</li>
+                            <li>Business information</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page-card customer-card">
+                        <div class="page-title">
+                            🛍️ Product Catalog
+                        </div>
+                        <div class="page-description">
+                            Browse available products with details
+                        </div>
+                        <ul class="key-features">
+                            <li>Product images & descriptions</li>
+                            <li>Pricing information</li>
+                            <li>Available quantities</li>
+                            <li>Category filtering</li>
+                            <li>Search functionality</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page-card customer-card">
+                        <div class="page-title">
+                            🛒 Shopping Cart
+                        </div>
+                        <div class="page-description">
+                            Review and modify selected items
+                        </div>
+                        <ul class="key-features">
+                            <li>Cart item management</li>
+                            <li>Quantity adjustments</li>
+                            <li>Total calculation</li>
+                            <li>Continue shopping</li>
+                            <li>Clear cart option</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page-card customer-card">
+                        <div class="page-title">
+                            📝 Checkout Form
+                        </div>
+                        <div class="page-description">
+                            Customer details and order finalization
+                        </div>
+                        <ul class="key-features">
+                            <li>Personal information form</li>
+                            <li>Delivery address</li>
+                            <li>Contact details</li>
+                            <li>Special instructions</li>
+                            <li>Order review</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page-card customer-card">
+                        <div class="page-title">
+                            ✅ Order Confirmation
+                        </div>
+                        <div class="page-description">
+                            Order submission confirmation
+                        </div>
+                        <ul class="key-features">
+                            <li>Order summary</li>
+                            <li>Confirmation number</li>
+                            <li>Delivery details</li>
+                            <li>Contact information</li>
+                            <li>Next steps guidance</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page-card customer-card">
+                        <div class="page-title">
+                            💳 Payment Interface
+                        </div>
+                        <div class="page-description">
+                            Post-delivery payment processing
+                        </div>
+                        <ul class="key-features">
+                            <li>Invoice details</li>
+                            <li>Stripe payment form</li>
+                            <li>Payment confirmation</li>
+                            <li>Receipt generation</li>
+                            <li>Payment history</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
